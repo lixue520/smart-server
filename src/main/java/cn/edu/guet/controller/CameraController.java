@@ -5,8 +5,11 @@ package cn.edu.guet.controller;
  * @Author qin
  * @Date 2023/3/13 19:23
  */
+import cn.edu.guet.ScheduledTasks.DelImgTask;
 import cn.edu.guet.entity.bottleData;
 import com.google.gson.Gson;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +35,7 @@ import java.time.format.DateTimeFormatter;
  */
 @Controller
 public class CameraController {
-
+    private static final Logger logger = LoggerFactory.getLogger(CameraController.class);
     @Autowired
     IMqttSender mqttSender;
 
@@ -41,6 +44,7 @@ public class CameraController {
 
     @PostMapping("/upload")
     public ResponseEntity<String> upload(@RequestBody byte[] imageBytes) throws IOException {
+
         System.out.println("--------kaishi--------");
         String filePath = "C:/Users/qin/Desktop/code/opencvtest/b2.png";  //上传服务器的时候记得改一下吧，发布的时候用注解来传。
         File file = new File(filePath);
@@ -59,10 +63,12 @@ public class CameraController {
         payload.setDeviceid("0号机");
         payload.setLevel((float) 0.01);
 
-        mqttSender.sendToMqtt("smartwater/001设备",gson.toJson(payload));//
-        System.out.println("Image uploaded successfully");
+        mqttSender.sendToMqtt("smartwater/esp32-cam",gson.toJson(payload));//
+        logger.info("ESP32-CAM send is ok!");
         return new ResponseEntity<>("Image uploaded successfully", HttpStatus.OK);
     }
+
+
 
 }
 
