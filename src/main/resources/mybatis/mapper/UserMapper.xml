@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.mapper.UserMapper">
+
+    <resultMap type="cn.edu.guet.entity.VO.UserVO" id="UserVOMap">
+        <result property="user_name" column="user_name" jdbcType="VARCHAR"/>
+        <result property="user_id" column="user_id" jdbcType="INTEGER"/>
+        <result property="useremail" column="useremail" jdbcType="VARCHAR"/>
+        <result property="idcard" column="idcard" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <!--分页查询-->
+    <select id="queryByPage" parameterType="cn.edu.guet.entity.DTO.UserDTO" resultMap="UserVOMap">
+        SELECT
+        user_name, user_id, useremail, idcard, create_time, update_time
+        FROM user
+        <where>
+            <if test="param.user_name != null and param.user_name != ''">
+                AND user_name = param.#{user_name}
+            </if>
+            <if test="param.user_id != null">
+                AND user_id = param.#{user_id}
+            </if>
+            <if test="param.useremail != null and param.useremail != ''">
+                AND useremail = param.#{useremail}
+            </if>
+            <if test="param.idcard != null and param.idcard != ''">
+                AND idcard = param.#{idcard}
+            </if>
+            <if test="param.createTime != null">
+                AND create_time = param.#{createTime}
+            </if>
+            <if test="param.updateTime != null">
+                AND update_time = param.#{updateTime}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+
+    <!--根据ID查详情-->
+    <select id="queryById" parameterType="long" resultMap="UserVOMap">
+        SELECT user_name,
+               user_id,
+               useremail,
+               idcard,
+               create_time,
+               update_time
+        FROM user
+        WHERE user_id = #{user_id} LIMIT 1
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="user_id" useGeneratedKeys="true">
+        INSERT INTO user(user_name, useremail, idcard, create_time, update_time)
+        VALUES (#{user_name}, #{useremail}, #{idcard}, #{createTime}, #{updateTime})
+    </insert>
+
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        UPDATE user
+        <set>
+            <if test="user_name != null and user_name != ''">
+                user_name = #{user_name},
+            </if>
+            <if test="useremail != null and useremail != ''">
+                useremail = #{useremail},
+            </if>
+            <if test="idcard != null and idcard != ''">
+                idcard = #{idcard},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        WHERE user_id = #{user_id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        DELETE
+        FROM user
+        WHERE user_id = #{user_id}
+    </delete>
+
+</mapper>

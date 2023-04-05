@@ -3,6 +3,7 @@
   <component name="Encoding">
     <file url="file://$MAVEN_REPOSITORY$/org/springframework/boot/spring-boot-starter-parent/2.5.14/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/cn/edu/guet/alipay/LoadDLL.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/main/java/cn/edu/guet/opencv/VideoProcessor.java" charset="UTF-8" />
   </component>
 </project>

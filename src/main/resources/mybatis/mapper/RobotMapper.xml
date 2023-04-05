@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.mapper.RobotMapper">
+
+    <resultMap type="cn.edu.guet.entity.VO.RobotVO" id="RobotVOMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="name" column="name" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="topicSub" column="topic_sub" jdbcType="VARCHAR"/>
+        <result property="topicPub" column="topic_pub" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <!--分页查询-->
+    <select id="queryByPage" parameterType="cn.edu.guet.entity.DTO.RobotDTO" resultMap="RobotVOMap">
+        SELECT
+        id, name, address, topic_sub, topic_pub, create_time, update_time
+        FROM robot
+        <where>
+            <if test="param.id != null">
+                AND id = param.#{id}
+            </if>
+            <if test="param.name != null and param.name != ''">
+                AND name = param.#{name}
+            </if>
+            <if test="param.address != null and param.address != ''">
+                AND address = param.#{address}
+            </if>
+            <if test="param.topicSub != null and param.topicSub != ''">
+                AND topic_sub = param.#{topicSub}
+            </if>
+            <if test="param.topicPub != null and param.topicPub != ''">
+                AND topic_pub = param.#{topicPub}
+            </if>
+            <if test="param.createTime != null">
+                AND create_time = param.#{createTime}
+            </if>
+            <if test="param.updateTime != null">
+                AND update_time = param.#{updateTime}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+
+    <!--根据ID查详情-->
+    <select id="queryById" parameterType="long" resultMap="RobotVOMap">
+        SELECT id,
+               name,
+               address,
+               topic_sub,
+               topic_pub,
+               create_time,
+               update_time
+        FROM robot
+        WHERE id = #{id} LIMIT 1
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO robot(name, address, topic_sub, topic_pub, create_time, update_time)
+        VALUES (#{name}, #{address}, #{topicSub}, #{topicPub}, #{createTime}, #{updateTime})
+    </insert>
+
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        UPDATE robot
+        <set>
+            <if test="name != null and name != ''">
+                name = #{name},
+            </if>
+            <if test="address != null and address != ''">
+                address = #{address},
+            </if>
+            <if test="topicSub != null and topicSub != ''">
+                topic_sub = #{topicSub},
+            </if>
+            <if test="topicPub != null and topicPub != ''">
+                topic_pub = #{topicPub},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        DELETE
+        FROM robot
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

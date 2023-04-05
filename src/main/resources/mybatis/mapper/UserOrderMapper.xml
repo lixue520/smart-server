@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.mapper.UserOrderMapper">
+
+    <resultMap type="cn.edu.guet.entity.VO.UserOrderVO" id="UserOrderVOMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="money" column="money" jdbcType="INTEGER"/>
+        <result property="amount" column="amount" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="states" column="states" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+    <!--分页查询-->
+    <select id="queryByPage" parameterType="cn.edu.guet.entity.DTO.UserOrderDTO" resultMap="UserOrderVOMap">
+        SELECT
+        id, money, amount, user_id, states, create_time, update_time
+        FROM user_order
+        <where>
+            <if test="param.id != null">
+                AND id = param.#{id}
+            </if>
+            <if test="param.money != null">
+                AND money = param.#{money}
+            </if>
+            <if test="param.amount != null">
+                AND amount = param.#{amount}
+            </if>
+            <if test="param.userId != null">
+                AND user_id = param.#{userId}
+            </if>
+            <if test="param.states != null and param.states != ''">
+                AND states = param.#{states}
+            </if>
+            <if test="param.createTime != null">
+                AND create_time = param.#{createTime}
+            </if>
+            <if test="param.updateTime != null">
+                AND update_time = param.#{updateTime}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+
+    <!--根据ID查详情-->
+    <select id="queryById" parameterType="long" resultMap="UserOrderVOMap">
+        SELECT id,
+               money,
+               amount,
+               user_id,
+               states,
+               create_time,
+               update_time
+        FROM user_order
+        WHERE id = #{id} LIMIT 1
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO user_order(money, amount, user_id, states, create_time, update_time)
+        VALUES (#{money}, #{amount}, #{userId}, #{states}, #{createTime}, #{updateTime})
+    </insert>
+
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        UPDATE user_order
+        <set>
+            <if test="money != null">
+                money = #{money},
+            </if>
+            <if test="amount != null">
+                amount = #{amount},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="states != null and states != ''">
+                states = #{states},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        DELETE
+        FROM user_order
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

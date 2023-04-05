@@ -10,7 +10,7 @@ public class UserQueryBean {
     /**
      * contains name pattern.
      */
-    private String userName;
+    private String user_name;
 
     /**
      * contains desc pattern.

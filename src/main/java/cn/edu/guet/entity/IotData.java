@@ -6,44 +6,28 @@ package cn.edu.guet.entity;
  * @Date 2023/3/12 0:53
  */
 
-
-import com.google.gson.annotations.SerializedName;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.stereotype.Component;
 
 import java.io.Serializable;
-import java.util.Date;
 
+/**
+ * @param <T> User user = new User();
+ *            // 设置user的属性...
+ *            IotData<User> iotData = new IotData<>("topic", "types", user);
+ */
 @Component
 @Getter
 @Setter
-public class IotData implements Serializable {
-
-    @SerializedName("deviceid")
-    String deviceid;//设备id
-
-    @SerializedName("sensorid")
-    String sensorid;//数据id
-
-    @SerializedName("types")
-    String types;//设备来源
-
-    @SerializedName("loraid")
-    String loraid;//loraid硬件的id
-
-    @SerializedName("createtime")
-    Date createtime;//创建时间
-
-    @SerializedName("temp")
-    float temp;//温度
-
-    @SerializedName("humi")
-    float humi;//湿度
-
-    @SerializedName("light")
-    float light;//光敏
-
-//get/set/tostring省略...
+@AllArgsConstructor
+@NoArgsConstructor
+public class IotData<T> implements Serializable {
+    public String topic;//话题
+    public String types;//设备类型
+    public String user_name;//用户
+    public T data;
 
 }

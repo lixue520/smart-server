@@ -1,0 +1,153 @@
+Starting App using Java 18.0.1 on LAPTOP-DPQV773V with PID 4720 (C:\Users\qin\Desktop\code\smart-server\target\classes started by qin in C:\Users\qin\Desktop\code\smart-server)
+No active profile set, falling back to 1 default profile: "default"
+No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Bean 'integrationChannelResolver' of type [org.springframework.integration.support.channel.BeanFactoryChannelResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.63]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 3551 ms
+Exposing 1 endpoint(s) beneath base path '/actuator'
+Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+Channel 'application.errorChannel' has 1 subscriber(s).
+started bean '_org.springframework.integration.errorLogger'
+Adding {message-handler:mqttConfig.handler.serviceActivator} as a subscriber to the 'mqttInboundChannel' channel
+Channel 'application.mqttInboundChannel' has 1 subscriber(s).
+started bean 'mqttConfig.handler.serviceActivator'
+Adding {message-handler:mqttConfig.mqttOutbound.serviceActivator} as a subscriber to the 'mqttOutboundChannel' channel
+Channel 'application.mqttOutboundChannel' has 1 subscriber(s).
+started bean 'mqttConfig.mqttOutbound.serviceActivator'
+started bean 'IMqttSender#sendToMqtt(String)'
+started bean 'IMqttSender#sendToMqtt(String, String)'
+started bean 'IMqttSender#sendToMqtt(String, int, String)'
+started bean 'IMqttSender'
+started bean 'inbound'; defined in: 'class path resource [cn/edu/guet/mqtt/MqttConfig.class]'; from source: 'cn.edu.guet.mqtt.MqttConfig.inbound()'
+Starting ProtocolHandler ["http-nio-8080"]
+Tomcat started on port(s): 8080 (http) with context path ''
+Started App in 9.272 seconds (JVM running for 11.063)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 5 ms
+HikariPool-1 - Starting...
+HikariPool-1 - Start completed.
+stopped bean 'inbound'; defined in: 'class path resource [cn/edu/guet/mqtt/MqttConfig.class]'; from source: 'cn.edu.guet.mqtt.MqttConfig.inbound()'
+stopped bean 'IMqttSender#sendToMqtt(String)'
+stopped bean 'IMqttSender#sendToMqtt(String, String)'
+stopped bean 'IMqttSender#sendToMqtt(String, int, String)'
+stopped bean 'IMqttSender'
+Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+Channel 'application.errorChannel' has 0 subscriber(s).
+stopped bean '_org.springframework.integration.errorLogger'
+Removing {message-handler:mqttConfig.handler.serviceActivator} as a subscriber to the 'mqttInboundChannel' channel
+Channel 'application.mqttInboundChannel' has 0 subscriber(s).
+stopped bean 'mqttConfig.handler.serviceActivator'
+Removing {message-handler:mqttConfig.mqttOutbound.serviceActivator} as a subscriber to the 'mqttOutboundChannel' channel
+Channel 'application.mqttOutboundChannel' has 0 subscriber(s).
+stopped bean 'mqttConfig.mqttOutbound.serviceActivator'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting App using Java 18.0.1 on LAPTOP-DPQV773V with PID 20432 (C:\Users\qin\Desktop\code\smart-server\target\classes started by qin in C:\Users\qin\Desktop\code\smart-server)
+No active profile set, falling back to 1 default profile: "default"
+No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Bean 'integrationChannelResolver' of type [org.springframework.integration.support.channel.BeanFactoryChannelResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.63]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 3843 ms
+HikariPool-1 - Starting...
+HikariPool-1 - Start completed.
+Exposing 1 endpoint(s) beneath base path '/actuator'
+Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+Channel 'application.errorChannel' has 1 subscriber(s).
+started bean '_org.springframework.integration.errorLogger'
+Adding {message-handler:mqttConfig.handler.serviceActivator} as a subscriber to the 'mqttInboundChannel' channel
+Channel 'application.mqttInboundChannel' has 1 subscriber(s).
+started bean 'mqttConfig.handler.serviceActivator'
+Adding {message-handler:mqttConfig.mqttOutbound.serviceActivator} as a subscriber to the 'mqttOutboundChannel' channel
+Channel 'application.mqttOutboundChannel' has 1 subscriber(s).
+started bean 'mqttConfig.mqttOutbound.serviceActivator'
+started bean 'IMqttSender#sendToMqtt(String)'
+started bean 'IMqttSender#sendToMqtt(String, String)'
+started bean 'IMqttSender#sendToMqtt(String, int, String)'
+started bean 'IMqttSender'
+started bean 'inbound'; defined in: 'class path resource [cn/edu/guet/mqtt/MqttConfig.class]'; from source: 'cn.edu.guet.mqtt.MqttConfig.inbound()'
+Starting ProtocolHandler ["http-nio-8080"]
+Tomcat started on port(s): 8080 (http) with context path ''
+Started App in 11.412 seconds (JVM running for 13.497)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 0 ms
+stopped bean 'inbound'; defined in: 'class path resource [cn/edu/guet/mqtt/MqttConfig.class]'; from source: 'cn.edu.guet.mqtt.MqttConfig.inbound()'
+stopped bean 'IMqttSender#sendToMqtt(String)'
+stopped bean 'IMqttSender#sendToMqtt(String, String)'
+stopped bean 'IMqttSender#sendToMqtt(String, int, String)'
+stopped bean 'IMqttSender'
+Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+Channel 'application.errorChannel' has 0 subscriber(s).
+stopped bean '_org.springframework.integration.errorLogger'
+Removing {message-handler:mqttConfig.handler.serviceActivator} as a subscriber to the 'mqttInboundChannel' channel
+Channel 'application.mqttInboundChannel' has 0 subscriber(s).
+stopped bean 'mqttConfig.handler.serviceActivator'
+Removing {message-handler:mqttConfig.mqttOutbound.serviceActivator} as a subscriber to the 'mqttOutboundChannel' channel
+Channel 'application.mqttOutboundChannel' has 0 subscriber(s).
+stopped bean 'mqttConfig.mqttOutbound.serviceActivator'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.
+Starting App using Java 18.0.1 on LAPTOP-DPQV773V with PID 2716 (C:\Users\qin\Desktop\code\smart-server\target\classes started by qin in C:\Users\qin\Desktop\code\smart-server)
+No active profile set, falling back to 1 default profile: "default"
+No bean named 'errorChannel' has been explicitly defined. Therefore, a default PublishSubscribeChannel will be created.
+No bean named 'integrationHeaderChannelRegistry' has been explicitly defined. Therefore, a default DefaultHeaderChannelRegistry will be created.
+Bean 'org.springframework.integration.config.IntegrationManagementConfiguration' of type [org.springframework.integration.config.IntegrationManagementConfiguration] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Bean 'integrationChannelResolver' of type [org.springframework.integration.support.channel.BeanFactoryChannelResolver] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Tomcat initialized with port(s): 8080 (http)
+Initializing ProtocolHandler ["http-nio-8080"]
+Starting service [Tomcat]
+Starting Servlet engine: [Apache Tomcat/9.0.63]
+Initializing Spring embedded WebApplicationContext
+Root WebApplicationContext: initialization completed in 3530 ms
+HikariPool-1 - Starting...
+HikariPool-1 - Start completed.
+Exposing 1 endpoint(s) beneath base path '/actuator'
+Adding {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+Channel 'application.errorChannel' has 1 subscriber(s).
+started bean '_org.springframework.integration.errorLogger'
+Adding {message-handler:mqttConfig.handler.serviceActivator} as a subscriber to the 'mqttInboundChannel' channel
+Channel 'application.mqttInboundChannel' has 1 subscriber(s).
+started bean 'mqttConfig.handler.serviceActivator'
+Adding {message-handler:mqttConfig.mqttOutbound.serviceActivator} as a subscriber to the 'mqttOutboundChannel' channel
+Channel 'application.mqttOutboundChannel' has 1 subscriber(s).
+started bean 'mqttConfig.mqttOutbound.serviceActivator'
+started bean 'IMqttSender#sendToMqtt(String)'
+started bean 'IMqttSender#sendToMqtt(String, String)'
+started bean 'IMqttSender#sendToMqtt(String, int, String)'
+started bean 'IMqttSender'
+started bean 'inbound'; defined in: 'class path resource [cn/edu/guet/mqtt/MqttConfig.class]'; from source: 'cn.edu.guet.mqtt.MqttConfig.inbound()'
+Starting ProtocolHandler ["http-nio-8080"]
+Tomcat started on port(s): 8080 (http) with context path ''
+Started App in 10.119 seconds (JVM running for 11.51)
+Initializing Spring DispatcherServlet 'dispatcherServlet'
+Initializing Servlet 'dispatcherServlet'
+Completed initialization in 5 ms
+stopped bean 'inbound'; defined in: 'class path resource [cn/edu/guet/mqtt/MqttConfig.class]'; from source: 'cn.edu.guet.mqtt.MqttConfig.inbound()'
+stopped bean 'IMqttSender#sendToMqtt(String)'
+stopped bean 'IMqttSender#sendToMqtt(String, String)'
+stopped bean 'IMqttSender#sendToMqtt(String, int, String)'
+stopped bean 'IMqttSender'
+Removing {logging-channel-adapter:_org.springframework.integration.errorLogger} as a subscriber to the 'errorChannel' channel
+Channel 'application.errorChannel' has 0 subscriber(s).
+stopped bean '_org.springframework.integration.errorLogger'
+Removing {message-handler:mqttConfig.handler.serviceActivator} as a subscriber to the 'mqttInboundChannel' channel
+Channel 'application.mqttInboundChannel' has 0 subscriber(s).
+stopped bean 'mqttConfig.handler.serviceActivator'
+Removing {message-handler:mqttConfig.mqttOutbound.serviceActivator} as a subscriber to the 'mqttOutboundChannel' channel
+Channel 'application.mqttOutboundChannel' has 0 subscriber(s).
+stopped bean 'mqttConfig.mqttOutbound.serviceActivator'
+HikariPool-1 - Shutdown initiated...
+HikariPool-1 - Shutdown completed.

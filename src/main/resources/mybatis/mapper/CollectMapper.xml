@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.mapper.CollectMapper">
+
+    <resultMap type="cn.edu.guet.entity.VO.CollectVO" id="CollectVOMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="ph" column="ph" jdbcType="VARCHAR"/>
+        <result property="tds" column="tds" jdbcType="VARCHAR"/>
+        <result property="temp" column="temp" jdbcType="VARCHAR"/>
+        <result property="flow1" column="flow1" jdbcType="VARCHAR"/>
+        <result property="flow" column="flow" jdbcType="VARCHAR"/>
+        <result property="height" column="height" jdbcType="VARCHAR"/>
+        <result property="height1" column="height1" jdbcType="VARCHAR"/>
+        <result property="bottle" column="bottle" jdbcType="VARCHAR"/>
+        <result property="dzf" column="dzf" jdbcType="INTEGER"/>
+        <result property="dzf1" column="dzf1" jdbcType="INTEGER"/>
+        <result property="pump" column="pump" jdbcType="INTEGER"/>
+        <result property="pump1" column="pump1" jdbcType="INTEGER"/>
+        <result property="csb" column="csb" jdbcType="VARCHAR"/>
+        <result property="robotId" column="robot_id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="user_id" column="user_id" jdbcType="INTEGER"/>
+        <result property="beep" column="beep" jdbcType="INTEGER"/>
+        <result property="zwLed" column="zw_led" jdbcType="INTEGER"/>
+        <result property="types" column="types" jdbcType="VARCHAR"/>
+        <result property="status" column="status" jdbcType="INTEGER"/>
+        <result property="devicdId" column="devicd_id" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="QueryAll" parameterType="cn.edu.guet.entity.DTO.CollectDTO" resultMap="CollectVOMap">
+        SELECT *
+        FROM collect
+        ORDER BY create_time DESC LIMIT 30;
+    </select>
+    <!--分页查询-->
+    <select id="queryByPage" parameterType="cn.edu.guet.entity.DTO.CollectDTO" resultMap="CollectVOMap">
+        SELECT
+        id, ph, tds, temp, flow1, flow, height, height1, bottle, dzf, dzf1, pump, pump1, csb, robot_id, create_time,
+        update_time, user_id, beep, zw_led, types, status, devicd_id
+        FROM collect
+        <where>
+            <if test="param.id != null">
+                AND id = param.#{id}
+            </if>
+            <if test="param.ph != null and param.ph != ''">
+                AND ph = param.#{ph}
+            </if>
+            <if test="param.tds != null and param.tds != ''">
+                AND tds = param.#{tds}
+            </if>
+            <if test="param.temp != null and param.temp != ''">
+                AND temp = param.#{temp}
+            </if>
+            <if test="param.flow1 != null and param.flow1 != ''">
+                AND flow1 = param.#{flow1}
+            </if>
+            <if test="param.flow != null and param.flow != ''">
+                AND flow = param.#{flow}
+            </if>
+            <if test="param.height != null and param.height != ''">
+                AND height = param.#{height}
+            </if>
+            <if test="param.height1 != null and param.height1 != ''">
+                AND height1 = param.#{height1}
+            </if>
+            <if test="param.bottle != null and param.bottle != ''">
+                AND bottle = param.#{bottle}
+            </if>
+            <if test="param.dzf != null">
+                AND dzf = param.#{dzf}
+            </if>
+            <if test="param.dzf1 != null">
+                AND dzf1 = param.#{dzf1}
+            </if>
+            <if test="param.pump != null">
+                AND pump = param.#{pump}
+            </if>
+            <if test="param.pump1 != null">
+                AND pump1 = param.#{pump1}
+            </if>
+            <if test="param.csb != null and param.csb != ''">
+                AND csb = param.#{csb}
+            </if>
+            <if test="param.robotId != null">
+                AND robot_id = param.#{robotId}
+            </if>
+            <if test="param.createTime != null">
+                AND create_time = param.#{createTime}
+            </if>
+            <if test="param.updateTime != null">
+                AND update_time = param.#{updateTime}
+            </if>
+            <if test="param.user_id != null">
+                AND user_id = param.#{user_id}
+            </if>
+            <if test="param.beep != null">
+                AND beep = param.#{beep}
+            </if>
+            <if test="param.zwLed != null">
+                AND zw_led = param.#{zwLed}
+            </if>
+            <if test="param.types != null and param.types != ''">
+                AND types = param.#{types}
+            </if>
+            <if test="param.status != null">
+                AND status = param.#{status}
+            </if>
+            <if test="param.devicdId != null and param.devicdId != ''">
+                AND devicd_id = param.#{devicdId}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+
+    <!--根据ID查详情-->
+    <select id="queryById" parameterType="long" resultMap="CollectVOMap">
+        SELECT id,
+               ph,
+               tds,
+               temp,
+               flow1,
+               flow,
+               height,
+               height1,
+               bottle,
+               dzf,
+               dzf1,
+               pump,
+               pump1,
+               csb,
+               robot_id,
+               create_time,
+               update_time,
+               user_id,
+               beep,
+               zw_led,
+               types,
+               status,
+               devicd_id
+        FROM collect
+        WHERE id = #{id} LIMIT 1
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO collect(ph, tds, temp, flow1, flow, height, height1, bottle, dzf, dzf1, pump, pump1, csb, robot_id,
+                            user_id, beep, zw_led, types, status, devicd_id)
+        VALUES (#{ph}, #{tds}, #{temp}, #{flow1}, #{flow}, #{height}, #{height1}, #{bottle}, #{dzf}, #{dzf1}, #{pump},
+                #{pump1}, #{csb}, #{robotId}, #{user_id}, #{beep}, #{zwLed}, #{types},
+                #{status}, #{devicdId})
+    </insert>
+
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        UPDATE collect
+        <set>
+            <if test="ph != null and ph != ''">
+                ph = #{ph},
+            </if>
+            <if test="tds != null and tds != ''">
+                tds = #{tds},
+            </if>
+            <if test="temp != null and temp != ''">
+                temp = #{temp},
+            </if>
+            <if test="flow1 != null and flow1 != ''">
+                flow1 = #{flow1},
+            </if>
+            <if test="flow != null and flow != ''">
+                flow = #{flow},
+            </if>
+            <if test="height != null and height != ''">
+                height = #{height},
+            </if>
+            <if test="height1 != null and height1 != ''">
+                height1 = #{height1},
+            </if>
+            <if test="bottle != null and bottle != ''">
+                bottle = #{bottle},
+            </if>
+            <if test="dzf != null">
+                dzf = #{dzf},
+            </if>
+            <if test="dzf1 != null">
+                dzf1 = #{dzf1},
+            </if>
+            <if test="pump != null">
+                pump = #{pump},
+            </if>
+            <if test="pump1 != null">
+                pump1 = #{pump1},
+            </if>
+            <if test="csb != null and csb != ''">
+                csb = #{csb},
+            </if>
+            <if test="robotId != null">
+                robot_id = #{robotId},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id},
+            </if>
+            <if test="beep != null">
+                beep = #{beep},
+            </if>
+            <if test="zwLed != null">
+                zw_led = #{zwLed},
+            </if>
+            <if test="types != null and types != ''">
+                types = #{types},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="devicdId != null and devicdId != ''">
+                devicd_id = #{devicdId},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        DELETE
+        FROM collect
+        WHERE id = #{id}
+    </delete>
+
+
+</mapper>

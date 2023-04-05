@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.guet.mapper.AccountMapper">
+
+    <resultMap type="cn.edu.guet.entity.VO.AccountVO" id="AccountVOMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="icStates" column="ic_states" jdbcType="VARCHAR"/>
+        <result property="user_money" column="user_money" jdbcType="VARCHAR"/>
+        <result property="icIntegral" column="ic_integral" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="user_id" column="user_id" jdbcType="INTEGER"/>
+        <result property="user_password" column="user_password" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+    <!--分页查询-->
+    <select id="queryByPage" parameterType="cn.edu.guet.entity.DTO.AccountDTO" resultMap="AccountVOMap">
+        SELECT
+        id, ic_states, user_money, ic_integral, create_time, update_time, user_id, user_password
+        FROM account
+        <where>
+            <if test="param.id != null">
+                AND id = param.#{id}
+            </if>
+            <if test="param.icStates != null and param.icStates != ''">
+                AND ic_states = param.#{icStates}
+            </if>
+            <if test="param.user_money != null and param.user_money != ''">
+                AND user_money = param.#{user_money}
+            </if>
+            <if test="param.icIntegral != null and param.icIntegral != ''">
+                AND ic_integral = param.#{icIntegral}
+            </if>
+            <if test="param.createTime != null">
+                AND create_time = param.#{createTime}
+            </if>
+            <if test="param.updateTime != null">
+                AND update_time = param.#{updateTime}
+            </if>
+            <if test="param.user_id != null">
+                AND user_id = param.#{user_id}
+            </if>
+            <if test="param.user_password != null and param.user_password != ''">
+                AND user_password = param.#{user_password}
+            </if>
+        </where>
+        ORDER BY create_time DESC
+    </select>
+
+
+    <!--根据ID查详情-->
+    <select id="queryById" parameterType="long" resultMap="AccountVOMap">
+        SELECT id,
+               ic_states,
+               user_money,
+               ic_integral,
+               create_time,
+               update_time,
+               user_id,
+               user_password
+        FROM account
+        WHERE id = #{id} LIMIT 1
+    </select>
+
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO account(ic_states, user_money, ic_integral, create_time, update_time, user_id, user_password)
+        VALUES (#{icStates}, #{user_money}, #{icIntegral}, #{createTime}, #{updateTime}, #{user_id}, #{user_password})
+    </insert>
+
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        UPDATE account
+        <set>
+            <if test="icStates != null and icStates != ''">
+                ic_states = #{icStates},
+            </if>
+            <if test="user_money != null and user_money != ''">
+                user_money = #{user_money},
+            </if>
+            <if test="icIntegral != null and icIntegral != ''">
+                ic_integral = #{icIntegral},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime},
+            </if>
+            <if test="user_id != null">
+                user_id = #{user_id},
+            </if>
+            <if test="user_password != null and user_password != ''">
+                user_password = #{user_password},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        DELETE
+        FROM account
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

@@ -1,16 +1,39 @@
 server:
-  port: 8080
+  port: 8086
 #spring:
 #  datasource:
 #    url: jdbc:mysql://47.99.72.68:3306/vueadmin?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
 #    driver-class-name: com.mysql.cj.jdbc.Driver
-#    username: DavidNan
-#    password: 123456
+#    user_name: DavidNan
+#    password: 12345678
 #--------------mqtt配置------------------------
 # 默认接受消息的主题---指定多个主题[物联网主题、对话主题-聊天室]
+#接口的配置文件的位置
+#给pojo实体类起别名
+mybatis:
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: cn.edu.guet
+
+# mybatis-plus配置
+mybatis-plus:
+  type-aliases-package: cn.edu.guet
+  configuration:
+    # 配置MyBatis日志，执行sql的时候，将sql打印到控制台
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mybatis/mapper/*.xml
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 12345678
+    url: jdbc:mysql://47.99.72.68:3306/smart?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    user_name: DavidNan
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 mqtt:
   receiver:
-    defaultTopic: receive_iot_topic/#,receive_chat_topic/#
+    defaultTopic: smartwater/#,receive_chat_topic/#
     # mqtt接收者的id-随机id
     clientId: ${random.value}
   sender:
@@ -19,9 +42,8 @@ mqtt:
     # mqtt发送者的id
     clientId: mqttProducer
   url: tcp://www.qzwxixi.cn:1883
-  username: admin
+  user_name: admin
   password: qinzhiwei123
-
 
 
 #

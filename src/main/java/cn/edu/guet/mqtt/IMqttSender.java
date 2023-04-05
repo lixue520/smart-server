@@ -32,6 +32,8 @@ public interface IMqttSender {
      */
     void sendToMqtt(@Header(MqttHeaders.TOPIC) String topic, String payload);
 
+    void subMqtt(@Header(MqttHeaders.TOPIC) String topic);
+
     /**
      * 发送信息到MQTT服务器
      *

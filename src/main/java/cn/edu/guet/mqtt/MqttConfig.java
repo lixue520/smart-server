@@ -36,8 +36,8 @@ public class MqttConfig {
         WILL_DATA = "offline".getBytes();
     }
 
-    @Value("${mqtt.username}")
-    private String username;
+    @Value("${mqtt.user_name}")
+    private String user_name;
 
     @Value("${mqtt.password}")
     private String password;
@@ -60,19 +60,22 @@ public class MqttConfig {
 
     /**
      * MQTT连接器选项
+     * 连接时执行
      */
     @Bean
     public MqttConnectOptions getSenderMqttConnectOptions() {
         MqttConnectOptions options = new MqttConnectOptions();
         // 设置连接的用户名
-        System.out.println(username);
-        if (!username.trim().equals("")) {
-            options.setUserName(username);
+        System.out.println(user_name);
+        if (!user_name.trim().equals("")) {
+            options.setUserName(user_name);
         }
         // 设置连接的密码
         options.setPassword(password.toCharArray());
+        System.out.println(password);
         // 设置连接的地址
         options.setServerURIs(new String[]{url});
+        System.out.println(url);
         // 设置超时时间 单位为秒
         options.setConnectionTimeout(100);
         // 设置会话心跳时间 单位为秒 服务器会每隔1.5*20秒的时间向客户端发送心跳判断客户端是否在线
@@ -80,6 +83,7 @@ public class MqttConfig {
         options.setKeepAliveInterval(30);
         // 设置“遗嘱”消息的话题，若客户端与服务器之间的连接意外中断，服务器将发布客户端的“遗嘱”消息。
         options.setWill("willTopic", WILL_DATA, 2, false);
+        System.out.println("willTopic:end");
         return options;
     }
 
